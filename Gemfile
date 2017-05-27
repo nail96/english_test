@@ -37,5 +37,5 @@ group :development, :test do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
