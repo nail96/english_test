@@ -9,4 +9,10 @@ RSpec.describe User do
     puts subject.inspect
     subject.save!
   end
+
+  it "persists a password digest based on the password that can be used for authentication" do
+    password = "password"
+    subject = FactoryGirl.create(:user, password: password)
+    expect(subject.authenticate(password)).to eq subject
+  end
 end
