@@ -15,4 +15,6 @@ RSpec.describe User do
     subject = FactoryGirl.create(:user, password: password)
     expect(subject.authenticate(password)).to eq subject
   end
+
+  it { is_expected.to validate_presence_of :password }
 end
