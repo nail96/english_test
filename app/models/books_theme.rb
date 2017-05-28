@@ -1,0 +1,2 @@
+class BooksTheme < ApplicationRecord
+end
