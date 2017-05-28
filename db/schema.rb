@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528140610) do
+ActiveRecord::Schema.define(version: 20170528143942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "sentence_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["sentence_id"], name: "index_answers_on_sentence_id", using: :btree
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -69,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170528140610) do
     t.index ["theory_id"], name: "index_units_on_theory_id", using: :btree
   end
 
+  add_foreign_key "answers", "sentences"
   add_foreign_key "exercises", "units"
   add_foreign_key "sentences", "exercises"
   add_foreign_key "units", "themes"
