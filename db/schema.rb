@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528110430) do
+ActiveRecord::Schema.define(version: 20170528121923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,26 @@ ActiveRecord::Schema.define(version: 20170528110430) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "theories", force: :cascade do |t|
+    t.string   "image"
+    t.string   "links"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "number"
+    t.integer  "theory_id"
+    t.integer  "theme_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["theme_id"], name: "index_units_on_theme_id", using: :btree
+    t.index ["theory_id"], name: "index_units_on_theory_id", using: :btree
+  end
+
   add_foreign_key "exercises", "sentences", column: "sentences_id"
   add_foreign_key "sentences", "answers"
+  add_foreign_key "units", "themes"
+  add_foreign_key "units", "theories"
 end

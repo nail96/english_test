@@ -1,4 +1,6 @@
 class Theory < ApplicationRecord
+  has_one :unit
+
   mount_base64_uploader :image, TheoryUploader
 
   validates :image, file_size: { less_than: 2.megabytes },
