@@ -17,3 +17,7 @@
 .byebug_history
 spec/examples.txt
 *.swp
+*.png
+*.jpg
+*.jpeg
+*.gif

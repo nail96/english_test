@@ -18,6 +18,10 @@ gem 'jsonapi-resources'
 # gem 'capistrano-rails', group: :development
 
 gem 'rack-cors'
+gem 'carrierwave', '~> 1.1'
+gem 'mini_magick'
+gem 'carrierwave-base64', '~> 2.5', '>= 2.5.2'
+gem 'file_validators', '~> 2.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri
