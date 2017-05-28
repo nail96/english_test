@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528121923) do
+ActiveRecord::Schema.define(version: 20170528135549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "answers", force: :cascade do |t|
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -36,19 +30,10 @@ ActiveRecord::Schema.define(version: 20170528121923) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "title"
-    t.integer  "sentences_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["sentences_id"], name: "index_exercises_on_sentences_id", using: :btree
-  end
-
-  create_table "sentences", force: :cascade do |t|
-    t.text     "text"
-    t.boolean  "has_specific_answer", default: false
-    t.integer  "answer_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["answer_id"], name: "index_sentences_on_answer_id", using: :btree
+    t.integer  "unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_exercises_on_unit_id", using: :btree
   end
 
   create_table "themes", force: :cascade do |t|
@@ -75,8 +60,7 @@ ActiveRecord::Schema.define(version: 20170528121923) do
     t.index ["theory_id"], name: "index_units_on_theory_id", using: :btree
   end
 
-  add_foreign_key "exercises", "sentences", column: "sentences_id"
-  add_foreign_key "sentences", "answers"
+  add_foreign_key "exercises", "units"
   add_foreign_key "units", "themes"
   add_foreign_key "units", "theories"
 end
