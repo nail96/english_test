@@ -19,6 +19,10 @@ RSpec.resource "Themes" do
     parameter "books", <<~DESC, scope: :relationships
       The book of the theme.
     DESC
+
+    parameter "units", <<~DESC, scope: :relationships
+      The units of the theme.
+    DESC
   end
 
   post "/v1/themes" do
