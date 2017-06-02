@@ -48,7 +48,6 @@ RSpec.resource "Themes" do
     end
 
     example_request "POST /v1/themes" do
-      puts response_body
       expect(status).to eq 201
     end
   end

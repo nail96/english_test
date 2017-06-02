@@ -98,7 +98,6 @@ RSpec.resource "Books" do
     end
 
     example_request "GET /v1/books" do
-      puts response_body
       expect(status).to eq 200
     end
   end

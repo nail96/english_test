@@ -1,11 +1,11 @@
 module V1
-  RSpec.describe UnitResource do
+  RSpec.describe AnswerResource do
     let :creatable_fields do
-      [:title, :number, :theory, :theme]
+      [:text, :sentence]
     end
 
     subject do
-      described_class.new Unit, {}
+      described_class.new Answer, {}
     end
 
     it "has the correct creatable fields" do
@@ -17,7 +17,7 @@ module V1
     end
 
     it "has the correct fetchable fields" do
-      expect(subject.fetchable_fields.sort).to eq (creatable_fields + [:id, :exercises, :created_at, :updated_at]).sort
+      expect(subject.fetchable_fields.sort).to eq (creatable_fields + [:id, :created_at, :updated_at]).sort
     end
   end
 end

@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     jsonapi_resources :themes
     jsonapi_resources :theories
     jsonapi_resources :units
+    jsonapi_resources :exercises
+    jsonapi_resources :sentences
+    jsonapi_resources :answers
   end
 end

@@ -1,16 +1,14 @@
 module V1
-  class UnitResource < BaseResource
+  class ExerciseResource < BaseResource
     attribute :title
-    attribute :number
+
+    has_one :unit
     
-    has_one :theory
-    has_one :theme
-    
-    has_many :exercises
+    has_many :sentences
 
     class << self
       def creatable_fields(context)
-        super - [:exercises]
+        super - [:sentences]
       end
 
       alias_method :updatable_fields, :creatable_fields
